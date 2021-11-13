@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: "newxaudaapp-d84f"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: "newxaudaapp-d84f"
+  template:
+    metadata:
+      labels:
+        app: "newxaudaapp-d84f"
+    spec:
+      containers:
+        - name: "newxaudaapp-d84f"
+          image: "xaudaapp.azurecr.io/newxaudaapp"
+          ports:
+          - containerPort: 80
