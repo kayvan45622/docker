@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: Kevin Image
 
 on:
   push:
@@ -15,4 +15,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      run: |
+           docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+           echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u "kayvan45622" --password-stdin
+           docker image build -t kayvan45622/xaudanewapp:v1 .
+           docker push kayvan45622/xaudanewapp:v1
