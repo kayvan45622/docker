@@ -12,8 +12,8 @@ jobs:
    build:
          runs-on: ubuntu-latest
          steps:
-         - name: Push & Build
          - uses: actions/checkout@v2
+         - name: Push & Build
            run: |
               echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u "kayvan45622" --password-stdin
               docker image build -t kayvan45622/xaudanewapp:v1 .
